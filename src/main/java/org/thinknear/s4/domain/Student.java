@@ -11,14 +11,14 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 /**
  * Created by raul on 7/13/16.
  */
-@EntityListeners(AuditingEntityListener.class)
 @Entity
 @Data
-public class Student {
+public class Student extends AuditingEntity {
 
     @Id
     @GeneratedValue
@@ -35,15 +35,4 @@ public class Student {
     @Length(min = 1, max = 64)
     private String lastName;
 
-    @CreatedBy
-    private String createdBy;
-
-    @CreatedDate
-    private ZonedDateTime createdDate;
-
-    @LastModifiedBy
-    private String modifiedBy;
-
-    @LastModifiedDate
-    private ZonedDateTime modifiedDate;
 }
