@@ -21,7 +21,7 @@ public class StudentController {
     protected StudentSoftDeletableService softDeletableService;
 
     @RequestMapping(path = "/v1/api/students/{student}/enable", method = RequestMethod.GET)
-    public ResponseEntity<String> enable(@PathParam("id") Student student) {
+    public ResponseEntity<String> enable(@PathParam("student") Student student) {
         softDeletableService.enable(student);
         return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
     }
