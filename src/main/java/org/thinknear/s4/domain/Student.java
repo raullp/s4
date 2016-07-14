@@ -24,9 +24,6 @@ public class Student extends AuditingEntity {
     @GeneratedValue
     private Long id;
 
-    @Version
-    private long version;
-
     @NotBlank
     @Length(min = 1, max = 64)
     private String firstName;
@@ -35,4 +32,6 @@ public class Student extends AuditingEntity {
     @Length(min = 1, max = 64)
     private String lastName;
 
+    @OneToMany
+    private List<Class> classes;
 }
