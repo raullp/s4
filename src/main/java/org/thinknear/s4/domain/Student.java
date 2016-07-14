@@ -25,8 +25,9 @@ public class Student {
 
     @NotBlank
     @Length(min = 1, max = 64)
-    private String lastName;
-
-    @Length(min = 1, max = 64)
     private String firstName;
+
+    @NotBlank
+    @Length(min = 1, max = 64)
+    private String lastName;
 }
