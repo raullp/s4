@@ -1,13 +1,14 @@
 package org.thinknear.s4.domain;
 
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import java.util.List;
 
 /**
@@ -15,6 +16,7 @@ import java.util.List;
  */
 @Entity
 @Data
+@ToString(exclude = "classes")
 public class Student extends AuditingEntity {
 
     @Id
@@ -29,6 +31,6 @@ public class Student extends AuditingEntity {
     @Length(min = 1, max = 64)
     private String lastName;
 
-    @OneToMany
+    @ManyToMany(mappedBy = "students")
     private List<Class> classes;
 }
