@@ -14,6 +14,6 @@ public class SoftDeletableEntityListener {
 
     @PrePersist
     public void handle(SoftDeletableEntity softDeletableEntity) {
-        softDeletableEntity.setStatus(Status.ACTIVE);
+        softDeletableEntity.setStatus(Status.ENABLED);
     }
 }

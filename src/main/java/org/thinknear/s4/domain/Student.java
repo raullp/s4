@@ -4,20 +4,19 @@ import lombok.Data;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.thinknear.s4.domain.listeners.SoftDeletableEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by raul on 7/13/16.
  */
-@Entity
 @Data
 @ToString(exclude = "classes")
-public class Student extends AuditingEntity {
+@EntityListeners(SoftDeletableEntityListener.class)
+@Entity
+public class Student extends AuditingEntity implements SoftDeletableEntity{
 
     @Id
     @GeneratedValue
@@ -33,4 +32,16 @@ public class Student extends AuditingEntity {
 
     @ManyToMany(mappedBy = "students")
     private List<Class> classes;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Status getStatus() {
+        return this.status;
+    }
 }
