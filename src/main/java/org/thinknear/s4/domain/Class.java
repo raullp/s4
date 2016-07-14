@@ -5,6 +5,7 @@ import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.thinknear.s4.domain.listeners.SoftDeletableEntityListener;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,8 +15,9 @@ import java.util.List;
  */
 @Data
 @ToString(exclude = "students")
+@EntityListeners(SoftDeletableEntityListener.class)
 @Entity
-public class Class extends AuditingEntity {
+public class Class extends AuditingEntity implements SoftDeletableEntity {
     @Id
     @GeneratedValue
     private Long id;
@@ -36,4 +38,16 @@ public class Class extends AuditingEntity {
 
     @ManyToMany
     private List<Student> students;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Status getStatus() {
+        return this.status;
+    }
 }
