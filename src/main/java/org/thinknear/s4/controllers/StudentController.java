@@ -28,7 +28,7 @@ public class StudentController {
         return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
     }
 
-    @RequestMapping(path = "/v1/api/students/{student}/deactivate", method = RequestMethod.GET)
+    @RequestMapping(path = "/v1/api/students/{student}/disable", method = RequestMethod.GET)
     public ResponseEntity<String>  disable(@PathParam("student") Student student) {
         studentService.disable(student);
         return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
