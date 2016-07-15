@@ -25,11 +25,11 @@ public interface StudentRepository extends PagingAndSortingRepository<Student, L
     void delete(Student student);
 
     @Query("FROM Student s WHERE s.firstName like %:firstName%")
-    Page<Class> findByFirstName(@Param("firstName")String firstName, Pageable pageable);
+    Page<Student> findByFirstName(@Param("firstName")String firstName, Pageable pageable);
 
     @Query("FROM Student s WHERE s.lastName like %:lastName%")
-    Page<Class> findByLastName(@Param("lastName")String lastName, Pageable pageable);
+    Page<Student> findByLastName(@Param("lastName")String lastName, Pageable pageable);
 
     @Query("FROM Student s WHERE s.firstName like %:query% or s.lastName like %:query%")
-    Page<Class> search(@Param("query")String description, Pageable pageable);
+    Page<Student> search(@Param("query")String description, Pageable pageable);
 }
