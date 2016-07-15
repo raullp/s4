@@ -5,6 +5,7 @@ import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.thinknear.s4.domain.listeners.SoftDeletableEntityListener;
+import org.thinknear.s4.domain.listeners.StudentListener;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 @Data
 @ToString(exclude = "classes")
-@EntityListeners(SoftDeletableEntityListener.class)
+@EntityListeners({SoftDeletableEntityListener.class, StudentListener.class})
 @Entity
 public class Student extends AuditingEntity implements SoftDeletableEntity{
 
