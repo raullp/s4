@@ -37,6 +37,14 @@ public class Student extends AuditingEntity implements SoftDeletableEntity{
     @Enumerated(EnumType.STRING)
     private Status status;
 
+
+    public Student() {}
+
+    public Student(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public void setStatus(Status status) {
         this.status = status;
     }
