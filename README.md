@@ -1,4 +1,13 @@
 # S4 (Super Simple Scheduling System)
+S4 microservice provides REST APIs for handling Students and Classes using the Hateoas standard, so it allow us to discover exposed services by browsing
+root entry using the embedded [HAL browser](http://http://localhost:8080/actuator/#http://localhost:8080/v1/api/)
+
+## Architecture
+Uses Spring boot due to it allows to develop micro-services in quick time using its Code Configuration and its great compatibility with other spring projects such as spring-data. Spring boot's embedded container and flexible configuration through properties files and environments help i
+Spring data-rest was chosen because it provides a HATEOAS REST services (CRUD, pagination, sorting and searching is easy to implement) enough to manage this project, also flexible to customize business logic, and provide APIs with a simplified view of resources using its *projection* feature.
+Spring data-jpa as data access module already provides generic classes to manage the CRUD operations with paging and sorting capabilities.
+Search operations usually takes time and impacts in the performance, would suggest to use a search engine like elasticsearch or solr (already manage indexing) and have a mechanism (Have a syncup Scheduler that reads from a table or handle rest data events and publish them to broker service) to sync up S4 database). There is a proof of concept in the 'elasticsearch' branch for this.
+In Memory H2 database was chosen for this task, but could be changed for any other database manager such us mysql/postgreSQL changing the properties file and adding the jdbc handler dependency.
 
 ## Requirements
   * Java 8
