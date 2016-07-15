@@ -14,7 +14,7 @@ With a Rest Client of your preference go to http://localhost:8080/v1/api
 ##Some usage samples:
 
 ###Create a Student
-curl -i -X POST -H "Content-Type:application/json" -d $'{"firstName": "Frodo", "lastName": "Baggings", "status": "ACTIVE"}' http://localhost:8080/v1/api/students
+curl -i -X POST -H "Content-Type:application/json" -d $'{"firstName": "Frodo", "lastName": "Baggings"}' http://localhost:8080/v1/api/students
 
 ###Create a Class
 curl -i -X POST -H "Content-Type:application/json" -d $'{"code": "angular-2-on-code-school", "title": "Angular 2 on Code School", "description": "Learn Angular 2 with video lessons and coding challenges."}' http://localhost:8080/v1/api/classes
