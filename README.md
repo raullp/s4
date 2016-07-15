@@ -33,6 +33,14 @@ curl http://localhost:8080/v1/api/students/1/classes
 ## Unregister an student from a class
 curl -i -X DELETE http://localhost:8080/v1/api/classes/1/students2
 
+## Minimal View projections
+Register some students
+curl -i -X PUT -H "Content-Type:text/uri-list" -d $'http://localhost:8080/v1/api/students/1\nhttp://localhost:8080/v1/api/students/2\nhttp://localhost:8080/v1/api/students/3\nhttp://localhost:8080/v1/api/students/4' http://localhost:8080/v1/api/classes/2/students
+
+Review the projections with minimal data
+curl http:://localhost:8080/v1/api/classes/2/students?projection=view
+curl http:://localhost:8080/v1/api/classes/2?projection=view
+
 # Searching APIs
 ## Searching APIs for Classes resource:
 ### Search classes
