@@ -31,3 +31,29 @@ curl http://localhost:8080/v1/api/students/1/classes
 
 ##Unregister an student from a class
 curl -i -X DELETE http://localhost:8080/v1/api/classes/1/students2
+
+# Searching APIs
+## Searching APIs for Classes resource:
+### Search classes
+curl http://localhost:8080/v1/api/classes/search/search?pattern=zombies
+
+### Search classes by its code
+curl http://localhost:8080/v1/api/classes/search/findByCode?code=angular
+
+### Search classes by title
+curl http://localhost:8080/v1/api/classes/search/findByTitle?title=angular
+
+### Search classes by description
+curl http://localhost:8080/v1/api/classes/search/findByDescription?description=Learn
+
+## Searching APIs for Students resource:
+### Search students
+curl http://localhost:8080/v1/api/students/search/search?query=Fett
+curl http://localhost:8080/v1/api/students/search/search?query=walker
+
+### Search students by its first name
+curl http://localhost:8080/v1/api/students/search/findByFirstName?firstName=an
+
+### Search students by Last Name
+curl http://localhost:8080/v1/api/students/search/findByLastName?lastName=ett
+
